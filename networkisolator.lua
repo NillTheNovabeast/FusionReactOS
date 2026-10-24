@@ -12,7 +12,6 @@ for address, ctype in component.list("modem") do
     end
 end
 
--- Ellenőrizzük a komponenseket
 if not wired or not wireless then
     error("Requires: 1 wireless and 1 wired network card")
 end
