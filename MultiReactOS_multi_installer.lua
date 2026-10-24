@@ -38,10 +38,11 @@ end
  print("4. Molten Salt Reactor controller")
  print("5. Geiger Counter reader")
  print("6. Make program autorun")
- print("7. Help / info")
- print("8. Exit")
+ print("7. Make eeprom readonly")
+ print("8. Help / info")
+ print("9. Exit")
  program = tonumber(io.read())
-if(program == 7) then
+if(program == 8) then
  term.clear()
  print("- help/info text here -")
  event.pull("key_down")
@@ -689,6 +690,26 @@ computer.pullSignal(dt)
 end
 ]======]
 end
+
+ if( program = 7 ) then
+  print("MultiReactOS Setup V1.0")
+  print(" ")
+  print("Set EEPROM as readonly? [Y/n]")
+   wrp = string.lower(tostring(io.read()))
+    if( wrp == "y" ) then
+  wp = eeprom.makeReadonly(eeprom.getChecksum())
+  if (wp ~= true) then
+   print("Setting EEPROM as readonly: failed")
+  else
+   print("Setting EEPROM as readonly: done")
+  end
+   cleanup()
+   os.exit()
+  else
+   print("Failed to set EEPROM as readonly")
+   cleanup()
+   os.exit()
+ end
  
  term.clear()
  print("MultiReactOS Setup V1.0")
