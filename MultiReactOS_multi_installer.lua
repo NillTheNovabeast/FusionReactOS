@@ -65,13 +65,14 @@ if( program == 7 ) then
   else
    print("Setting EEPROM as readonly: done")
   end
-   cleanup()
-   os.exit()
   else
-   print("Failed to set EEPROM as readonly")
-   cleanup()
-   os.exit()
+    print("Failed to set EEPROM as readonly")
   end
+  print(" ")
+  print("Press any key to exit")
+  event.pull("key_down")
+  cleanup()
+  os.exit()
 end
 if(program < 6) then
 term.clear()
