@@ -709,6 +709,7 @@ end
    print("Failed to set EEPROM as readonly")
    cleanup()
    os.exit()
+  end
  end
  
  term.clear()
