@@ -53,6 +53,7 @@ if( program == 6 ) then
   event.pull("key_down")
 end
 if( program == 7 ) then
+ term.clear()
  print("MultiReactOS Setup V1.0")
  print(" ")
  print("Set EEPROM as readonly? [Y/n]")
