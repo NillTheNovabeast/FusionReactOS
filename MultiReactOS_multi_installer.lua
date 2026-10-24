@@ -691,7 +691,7 @@ end
 ]======]
 end
 
- if( program = 7 ) then
+ if( program == 7 ) then
   print("MultiReactOS Setup V1.0")
   print(" ")
   print("Set EEPROM as readonly? [Y/n]")
