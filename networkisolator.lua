@@ -1,30 +1,29 @@
 local component = component
 local computer = computer
 
-local modems = {}
+local wired, wireless
+
 for address, ctype in component.list("modem") do
-    table.insert(modems, component.proxy(address))
+    local proxy = component.proxy(address)
+    if proxy.isWireless then
+        wireless = proxy
+    else
+        wired = proxy
+    end
 end
 
-if #modems < 2 then
-    error("This program requires 2 modems!")
+-- Ellenőrizzük a komponenseket
+if not wired or not wireless then
+    error("Requires: 1 wireless and 1 wired network card")
 end
-
-local modem1 = modems[1]
-local modem2 = modems[2]
 
 local PORT = 500
-modem1.open(PORT)
-modem2.open(PORT)
+wireless.open(PORT)
 
 while true do
     local e, receiverAddress, senderAddress, port, distance, ...) = computer.pullSignal()
     
-    if e == "modem_message" and port == PORT then
-        if receiverAddress == modem1.address then
-            modem2.broadcast(PORT, ...)
-        elseif receiverAddress == modem2.address then
-            modem1.broadcast(PORT, ...)
-        end
+    if e == "modem_message" and receiverAddress == wireless.address and port == PORT then
+        wired.broadcast(PORT, ...)
     end
 end
