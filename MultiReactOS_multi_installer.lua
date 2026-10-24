@@ -52,6 +52,26 @@ if( program == 6 ) then
   print("This code hasn't been written yet")
   event.pull("key_down")
 end
+if( program == 7 ) then
+ print("MultiReactOS Setup V1.0")
+ print(" ")
+ print("Set EEPROM as readonly? [Y/n]")
+ wrp = string.lower(tostring(io.read()))
+ if( wrp == "y" ) then
+  wp = eeprom.makeReadonly(eeprom.getChecksum())
+  if (wp ~= true) then
+   print("Setting EEPROM as readonly: failed")
+  else
+   print("Setting EEPROM as readonly: done")
+  end
+   cleanup()
+   os.exit()
+  else
+   print("Failed to set EEPROM as readonly")
+   cleanup()
+   os.exit()
+  end
+end
 if(program < 6) then
 term.clear()
  print("MultiReactOS Setup V1.0")
@@ -690,27 +710,6 @@ computer.pullSignal(dt)
 end
 ]======]
 end
-
- if( program == 7 ) then
-  print("MultiReactOS Setup V1.0")
-  print(" ")
-  print("Set EEPROM as readonly? [Y/n]")
-   wrp = string.lower(tostring(io.read()))
-    if( wrp == "y" ) then
-  wp = eeprom.makeReadonly(eeprom.getChecksum())
-  if (wp ~= true) then
-   print("Setting EEPROM as readonly: failed")
-  else
-   print("Setting EEPROM as readonly: done")
-  end
-   cleanup()
-   os.exit()
-  else
-   print("Failed to set EEPROM as readonly")
-   cleanup()
-   os.exit()
-  end
- end
  
  term.clear()
  print("MultiReactOS Setup V1.0")
