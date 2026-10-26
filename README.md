@@ -28,7 +28,7 @@ The installation help, debugging and the documentations are in the HELP.TXT
 - [ ] adding radiation scrubber
 - [ ] Make a more nicer README
 - [ ] Geiger counter station name
-- [ ] 7. option: make the program autorun
+- [ ] 8. option: make the program autorun
 
 
 
