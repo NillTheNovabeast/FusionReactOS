@@ -371,8 +371,8 @@ for lins in texts:gmatch("[^\n]+") do
   table.insert(liness, lins)
 end
 
-lenght = tonumber(liness[1]) or maxW
-count = tonumber(liness[2]) or maxH
+lenght = tonumber(liness[1])
+count = tonumber(liness[2])
 raw = {}
 for i = 3, #liness do
   table.insert(raw, liness[i])
@@ -382,8 +382,10 @@ othrs = table.concat(raw, "\n")
  gpu.setResolution(lenght, count)
     gpu.fill(1, 1, lenght, count, " ")
 
-if(maxW < lenght) or (maxH < count) then
- error("Max resolution reached")
+if not ((maxH == nil) or (maxW == nil)) then  
+ if(maxW < lenght) or (maxH < count) then
+  error("Max resolution reached")
+ end
 end
  
     local i = 1
