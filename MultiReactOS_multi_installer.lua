@@ -371,8 +371,8 @@ for lins in texts:gmatch("[^\n]+") do
   table.insert(liness, lins)
 end
 
-lenght = tonumber(liness[1])
-count = tonumber(liness[2])
+lenght = tonumber(liness[1]) or maxW
+count = tonumber(liness[2]) or maxH
 raw = {}
 for i = 3, #liness do
   table.insert(raw, liness[i])
